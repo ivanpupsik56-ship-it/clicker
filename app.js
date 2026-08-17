@@ -4,16 +4,24 @@ tg.ready();
 tg.expand();
 
 
+
 // ФОНОВАЯ МУЗЫКА
 
-const music = new Audio("sounds/background.mp3");
+const music = document.getElementById("music");
 
-music.loop = true;
 music.volume = 0.25;
 
 
 
-// данные игрока
+function playMusic(){
+
+    music.play().catch(()=>{});
+
+}
+
+
+
+
 
 let coins = Number(localStorage.getItem("coins")) || 0;
 
@@ -22,11 +30,9 @@ let hero = localStorage.getItem("hero") || "avatar";
 let power = Number(localStorage.getItem("power")) || 1;
 
 
-
 let bought = JSON.parse(
-    localStorage.getItem("bought")
+localStorage.getItem("bought")
 ) || ["avatar"];
-
 
 
 
@@ -43,7 +49,10 @@ const avatar = document.getElementById("avatar");
 coinsText.innerHTML = coins;
 
 
-avatar.src = "characters/" + hero + ".png";
+avatar.src =
+"characters/" + hero + ".png";
+
+
 
 
 
@@ -52,18 +61,17 @@ avatar.src = "characters/" + hero + ".png";
 
 // КЛИК
 
+
 document.getElementById("click").onclick = ()=>{
 
 
-    // запуск музыки после первого касания телефона
-
-    music.play();
+playMusic();
 
 
-    coins += power;
+coins += power;
 
 
-    save();
+save();
 
 
 };
@@ -76,35 +84,39 @@ document.getElementById("click").onclick = ()=>{
 
 // СОХРАНЕНИЕ
 
+
 function save(){
 
 
-    coinsText.innerHTML = coins;
+coinsText.innerHTML = coins;
+
+
+localStorage.setItem(
+"coins",
+coins
+);
 
 
 
-    localStorage.setItem(
-        "coins",
-        coins
-    );
+localStorage.setItem(
+"hero",
+hero
+);
 
 
-    localStorage.setItem(
-        "hero",
-        hero
-    );
+
+localStorage.setItem(
+"power",
+power
+);
 
 
-    localStorage.setItem(
-        "power",
-        power
-    );
 
+localStorage.setItem(
+"bought",
+JSON.stringify(bought)
+);
 
-    localStorage.setItem(
-        "bought",
-        JSON.stringify(bought)
-    );
 
 
 }
@@ -115,17 +127,20 @@ function save(){
 
 
 
-// ОТКРЫТЬ МАГАЗИН
+
+
+// МАГАЗИН
+
 
 document.getElementById("shopBtn").onclick = ()=>{
 
 
-    music.play();
+playMusic();
 
 
-    document
-    .getElementById("shop")
-    .classList.remove("hidden");
+document
+.getElementById("shop")
+.classList.remove("hidden");
 
 
 };
@@ -136,14 +151,13 @@ document.getElementById("shopBtn").onclick = ()=>{
 
 
 
-// ЗАКРЫТЬ МАГАЗИН
 
 document.getElementById("closeShop").onclick = ()=>{
 
 
-    document
-    .getElementById("shop")
-    .classList.add("hidden");
+document
+.getElementById("shop")
+.classList.add("hidden");
 
 
 };
@@ -157,7 +171,8 @@ document.getElementById("closeShop").onclick = ()=>{
 
 
 
-// ЛИСИЙ ЧЕМПИОН
+// ПОКУПКА ЛИСОГО
+
 
 document.getElementById("buyBald").onclick = ()=>{
 
@@ -180,7 +195,8 @@ buyHero(
 
 
 
-// ПУЗАТИК
+// ПОКУПКА ПУЗАТИКА
+
 
 document.getElementById("buyBoss").onclick = ()=>{
 
@@ -203,7 +219,8 @@ buyHero(
 
 
 
-// БОСС
+// ПОКУПКА БОССА
+
 
 document.getElementById("buyBoss2").onclick = ()=>{
 
@@ -226,79 +243,73 @@ buyHero(
 
 
 
-// ПОКУПКА
-
-function buyHero(name, price, strength, title){
+function buyHero(name,price,strength,title){
 
 
 
-    if(bought.includes(name)){
+if(bought.includes(name)){
 
 
-        alert(
-        title + " уже куплен!"
-        );
+alert(
+title+" уже куплен!"
+);
 
 
-        return;
+return;
 
 
-    }
+}
 
 
 
 
 
 
-    if(coins >= price){
+if(coins >= price){
 
 
 
-        coins -= price;
+coins -= price;
 
 
-        hero = name;
+hero = name;
 
 
-        power = strength;
-
-
-
-        bought.push(name);
+power = strength;
 
 
 
-
-
-        avatar.src =
-        "characters/" + name + ".png";
-
-
-
-        save();
+bought.push(name);
 
 
 
 
-        alert(
-        title + " куплен! ⚡ +" 
-        + strength 
-        + " за клик"
-        );
+avatar.src =
+"characters/"+name+".png";
 
 
 
-    }
-
-    else{
+save();
 
 
-        alert(
-        "Не хватает монет 😢"
-        );
+
+alert(
+title+" куплен! ⚡ +"+strength+" за клик"
+);
 
 
-    }
+
+}
+
+else{
+
+
+alert(
+"Не хватает монет 😢"
+);
+
+
+}
 
 
 }
