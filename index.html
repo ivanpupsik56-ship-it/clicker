@@ -9,6 +9,7 @@
 
 <title>КЛІКЕР 🇺🇦</title>
 
+
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <link rel="stylesheet" href="style.css">
@@ -19,10 +20,19 @@
 <body>
 
 
+<audio id="music" loop>
+    <source src="sounds/background.mp3" type="audio/mpeg">
+</audio>
+
+
+
 <div class="game">
 
 
-<h1>КЛІКЕР 🇺🇦</h1>
+<h1>
+КЛІКЕР 🇺🇦
+</h1>
+
 
 
 <div class="coins">
@@ -31,7 +41,8 @@
 
 
 
-<img 
+
+<img
 id="avatar"
 class="avatar"
 src="characters/avatar.png"
@@ -40,9 +51,14 @@ src="characters/avatar.png"
 
 
 
+
+
 <button id="click">
 КЛІК!
 </button>
+
+
+
 
 
 
@@ -54,29 +70,50 @@ src="characters/avatar.png"
 
 
 
+
+
+
 <div id="shop" class="shop hidden">
 
 
-<h2>🛒 МАГАЗИН</h2>
+
+<h2>
+🛒 МАГАЗИН
+</h2>
+
 
 
 
 
 <div class="card">
 
+
 <img src="characters/bald.png">
 
-<h3>Лисий Чемпіон</h3>
 
-<p>⚡ +2 за клік</p>
+<h3>
+Лисий Чемпіон
+</h3>
 
-<p>💰 100 🪙</p>
+
+<p>
+⚡ +2 за клік
+</p>
+
+
+<p>
+💰 100 🪙
+</p>
+
 
 <button id="buyBald">
 КУПИТИ
 </button>
 
+
 </div>
+
+
 
 
 
@@ -84,19 +121,33 @@ src="characters/avatar.png"
 
 <div class="card">
 
+
 <img src="characters/puzatik.png">
 
-<h3>Пузатик 🐷</h3>
 
-<p>⚡ +5 за клік</p>
+<h3>
+Пузатик 🐷
+</h3>
 
-<p>💰 750 🪙</p>
+
+<p>
+⚡ +5 за клік
+</p>
+
+
+<p>
+💰 750 🪙
+</p>
+
 
 <button id="buyBoss">
 КУПИТИ
 </button>
 
+
 </div>
+
+
 
 
 
@@ -105,19 +156,32 @@ src="characters/avatar.png"
 
 <div class="card">
 
+
 <img src="characters/boss.png">
 
-<h3>Босс 😎🐷</h3>
 
-<p>⚡ +10 за клік</p>
+<h3>
+Босс 😎🐷
+</h3>
 
-<p>💰 1500 🪙</p>
+
+<p>
+⚡ +10 за клік
+</p>
+
+
+<p>
+💰 1500 🪙
+</p>
+
 
 <button id="buyBoss2">
 КУПИТИ
 </button>
 
+
 </div>
+
 
 
 
@@ -130,10 +194,15 @@ src="characters/avatar.png"
 
 
 
+
 </div>
 
 
+
+
+
 </div>
+
 
 
 
