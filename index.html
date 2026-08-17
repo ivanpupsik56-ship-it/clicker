@@ -2,7 +2,6 @@
 <html lang="ru">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -15,44 +14,27 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-
 <!-- ФОНОВАЯ МУЗЫКА -->
-
 <audio id="music" loop preload="auto">
     <source src="sounds/background.mp3" type="audio/mpeg">
 </audio>
 
 
-
 <div class="game">
 
-
-    <!-- ЗАГОЛОВОК -->
-
-    <h1>
-        КЛІКЕР 🇺🇦
-    </h1>
-
-
+    <h1>КЛІКЕР 🇺🇦</h1>
 
     <!-- МОНЕТЫ -->
-
     <div class="coins">
-
         🪙 <span id="coins">0</span>
-
     </div>
 
 
-
     <!-- ГЛАВНЫЙ ПЕРСОНАЖ -->
-
     <img
         id="avatar"
         class="avatar"
@@ -61,47 +43,29 @@
     >
 
 
-
     <!-- КНОПКА КЛИКА -->
-
     <button id="click">
-
         КЛІК!
-
     </button>
 
 
-
-    <!-- МАГАЗИН -->
-
+    <!-- КНОПКА МАГАЗИНА -->
     <button id="shopBtn">
-
         🛒 МАГАЗИН
-
     </button>
 
 
 
+    <!-- ====================== -->
+    <!--        МАГАЗИН         -->
+    <!-- ====================== -->
+
+    <div id="shop" class="shop hidden">
+
+        <h2>🛒 МАГАЗИН</h2>
 
 
-    <!-- ======================== -->
-    <!--         МАГАЗИН          -->
-    <!-- ======================== -->
-
-    <div
-        id="shop"
-        class="shop hidden"
-    >
-
-
-        <h2>
-            🛒 МАГАЗИН
-        </h2>
-
-
-
-        <!-- ЛИСИЙ ЧЕМПИОН -->
-
+        <!-- ЛИСЫЙ ЧЕМПИОН -->
         <div class="card">
 
             <img
@@ -130,7 +94,6 @@
 
 
         <!-- ПУЗАТИК -->
-
         <div class="card">
 
             <img
@@ -159,7 +122,6 @@
 
 
         <!-- БОСС -->
-
         <div class="card">
 
             <img
@@ -188,7 +150,6 @@
 
 
         <!-- КОЧ БРАТАН -->
-
         <div class="card">
 
             <img
@@ -216,27 +177,45 @@
 
 
 
+        <!-- МЕЛЛСТРОЙ -->
+        <div class="card">
+
+            <img
+                src="characters/mellstroy.jpg"
+                alt="Меллстрой"
+            >
+
+            <h3>
+                Меллстрой 💸
+            </h3>
+
+            <p>
+                ⚡ +50 за клик
+            </p>
+
+            <p>
+                💰 Цена: 5000 🪙
+            </p>
+
+            <button id="buyMellstroy">
+                КУПИТИ
+            </button>
+
+        </div>
+
+
+
         <!-- НАЗАД -->
-
         <button id="closeShop">
-
             ⬅️ НАЗАД
-
         </button>
 
-
     </div>
-
 
 </div>
 
 
-
-<!-- JAVASCRIPT -->
-
 <script src="app.js"></script>
 
-
 </body>
-
 </html>
