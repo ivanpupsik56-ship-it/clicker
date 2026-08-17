@@ -18,205 +18,237 @@
 
 <body>
 
-<audio id="music" loop preload="auto">
-    <source src="sounds/background.mp3" type="audio/mpeg">
-</audio>
+    <!-- ФОНОВАЯ МУЗЫКА -->
+    <audio id="music" loop preload="auto">
+        <source src="sounds/background.mp3" type="audio/mpeg">
+    </audio>
 
 
-<div class="game">
+    <div class="game">
 
-    <h1>КЛІКЕР 🇺🇦</h1>
-
-    <div class="coins">
-        🪙 <span id="coins">0</span>
-    </div>
+        <h1>КЛІКЕР 🇺🇦</h1>
 
 
-    <!-- Главный персонаж -->
+        <!-- МОНЕТЫ -->
 
-    <img
-        id="avatar"
-        class="avatar"
-        src="characters/avatar.png"
-        alt="Персонаж"
-    >
-
-
-    <!-- Клик -->
-
-    <button id="click">
-        КЛІК!
-    </button>
-
-
-    <!-- Магазин -->
-
-    <button id="shopBtn">
-        🛒 МАГАЗИН
-    </button>
-
-
-    <!-- ========================= -->
-    <!--          МАГАЗИН          -->
-    <!-- ========================= -->
-
-    <div id="shop" class="shop hidden">
-
-        <h2>🛒 МАГАЗИН</h2>
-
-
-        <!-- Лисый Чемпион -->
-
-        <div class="card">
-
-            <img
-                src="characters/bald.png"
-                alt="Лисий Чемпион"
-            >
-
-            <h3>
-                Лисий Чемпион
-            </h3>
-
-            <p>
-                ⚡ +2 за клик
-            </p>
-
-            <p>
-                💰 Цена: 100 🪙
-            </p>
-
-            <button id="buyBald">
-                КУПИТИ
-            </button>
-
+        <div class="coins">
+            🪙 <span id="coins">0</span>
         </div>
 
 
-        <!-- Пузатик -->
+        <!-- ГЛАВНЫЙ ПЕРСОНАЖ -->
 
-        <div class="card">
-
-            <img
-                src="characters/puzatik.png"
-                alt="Пузатик"
-            >
-
-            <h3>
-                Пузатик 🐷
-            </h3>
-
-            <p>
-                ⚡ +5 за клик
-            </p>
-
-            <p>
-                💰 Цена: 750 🪙
-            </p>
-
-            <button id="buyBoss">
-                КУПИТИ
-            </button>
-
-        </div>
+        <img
+            id="avatar"
+            class="avatar"
+            src="characters/avatar.png"
+            alt="Персонаж"
+        >
 
 
-        <!-- Босс -->
+        <!-- КНОПКА КЛИКА -->
 
-        <div class="card">
-
-            <img
-                src="characters/boss.png"
-                alt="Босс"
-            >
-
-            <h3>
-                Босс 😎🐷
-            </h3>
-
-            <p>
-                ⚡ +10 за клик
-            </p>
-
-            <p>
-                💰 Цена: 1500 🪙
-            </p>
-
-            <button id="buyBoss2">
-                КУПИТИ
-            </button>
-
-        </div>
-
-
-        <!-- Коч братан -->
-
-        <div class="card">
-
-            <img
-                src="characters/koch.png"
-                alt="Коч братан"
-            >
-
-            <h3>
-                Коч братан 🪣
-            </h3>
-
-            <p>
-                ⚡ +20 за клик
-            </p>
-
-            <p>
-                💰 Цена: 2000 🪙
-            </p>
-
-            <button id="buyKoch">
-                КУПИТИ
-            </button>
-
-        </div>
-
-
-        <!-- Меллстрой -->
-
-        <div class="card">
-
-            <img
-                src="characters/mellstroy.png"
-                alt="Меллстрой"
-            >
-
-            <h3>
-                Меллстрой 💸
-            </h3>
-
-            <p>
-                ⚡ +50 за клик
-            </p>
-
-            <p>
-                💰 Цена: 5000 🪙
-            </p>
-
-            <button id="buyMellstroy">
-                КУПИТИ
-            </button>
-
-        </div>
-
-
-        <!-- Назад -->
-
-        <button id="closeShop">
-            ⬅️ НАЗАД
+        <button id="click">
+            КЛІК!
         </button>
 
+
+        <!-- МАГАЗИН -->
+
+        <button id="shopBtn">
+            🛒 МАГАЗИН
+        </button>
+
+
+        <!-- ====================== -->
+        <!--        МАГАЗИН         -->
+        <!-- ====================== -->
+
+        <div id="shop" class="shop hidden">
+
+            <h2>🛒 МАГАЗИН</h2>
+
+
+            <!-- ЛИСЫЙ ЧЕМПИОН -->
+
+            <div class="card">
+
+                <img
+                    src="characters/bald.png"
+                    alt="Лисий Чемпион"
+                >
+
+                <h3>
+                    Лисий Чемпион
+                </h3>
+
+                <p>
+                    ⚡ +2 за клик
+                </p>
+
+                <p>
+                    💰 Цена: 100 🪙
+                </p>
+
+                <button id="buyBald">
+                    КУПИТИ
+                </button>
+
+            </div>
+
+
+            <!-- ПУЗАТИК -->
+
+            <div class="card">
+
+                <img
+                    src="characters/puzatik.png"
+                    alt="Пузатик"
+                >
+
+                <h3>
+                    Пузатик 🐷
+                </h3>
+
+                <p>
+                    ⚡ +5 за клик
+                </p>
+
+                <p>
+                    💰 Цена: 750 🪙
+                </p>
+
+                <button id="buyPuzatik">
+                    КУПИТИ
+                </button>
+
+            </div>
+
+
+            <!-- БОСС -->
+
+            <div class="card">
+
+                <img
+                    src="characters/boss.png"
+                    alt="Босс"
+                >
+
+                <h3>
+                    Босс 😎🐷
+                </h3>
+
+                <p>
+                    ⚡ +10 за клик
+                </p>
+
+                <p>
+                    💰 Цена: 1500 🪙
+                </p>
+
+                <button id="buyBoss">
+                    КУПИТИ
+                </button>
+
+            </div>
+
+
+            <!-- КОЧ БРАТАН -->
+
+            <div class="card">
+
+                <img
+                    src="characters/koch.png"
+                    alt="Коч братан"
+                >
+
+                <h3>
+                    Коч братан 🪣
+                </h3>
+
+                <p>
+                    ⚡ +20 за клик
+                </p>
+
+                <p>
+                    💰 Цена: 2000 🪙
+                </p>
+
+                <button id="buyKoch">
+                    КУПИТИ
+                </button>
+
+            </div>
+
+
+            <!-- МЕЛЛСТРОЙ -->
+
+            <div class="card">
+
+                <img
+                    src="characters/mellstroy.png"
+                    alt="Меллстрой"
+                >
+
+                <h3>
+                    Меллстрой 💸
+                </h3>
+
+                <p>
+                    ⚡ +50 за клик
+                </p>
+
+                <p>
+                    💰 Цена: 5000 🪙
+                </p>
+
+                <button id="buyMellstroy">
+                    КУПИТИ
+                </button>
+
+            </div>
+
+
+            <!-- СИКС СЕВЕН -->
+
+            <div class="card">
+
+                <img
+                    src="characters/67.png"
+                    alt="Сикс севен"
+                >
+
+                <h3>
+                    Сикс севен 67️⃣
+                </h3>
+
+                <p>
+                    ⚡ +67 за клик
+                </p>
+
+                <p>
+                    💰 Цена: 6700 🪙
+                </p>
+
+                <button id="buy67">
+                    КУПИТИ
+                </button>
+
+            </div>
+
+
+            <!-- НАЗАД -->
+
+            <button id="closeShop">
+                ⬅️ НАЗАД
+            </button>
+
+        </div>
+
     </div>
 
-</div>
 
-
-<script src="app.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
