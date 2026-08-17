@@ -4,15 +4,16 @@ tg.ready();
 tg.expand();
 
 
-// ==========================
+// =====================================
 // ФОНОВАЯ МУЗЫКА
-// ==========================
+// =====================================
 
 const music = document.getElementById("music");
 
 if (music) {
     music.volume = 0.25;
 }
+
 
 function playMusic() {
 
@@ -23,15 +24,17 @@ function playMusic() {
 }
 
 
-// ==========================
+// =====================================
 // ДАННЫЕ ИГРОКА
-// ==========================
+// =====================================
 
 let coins =
     Number(localStorage.getItem("coins")) || 0;
 
+
 let hero =
     localStorage.getItem("hero") || "avatar";
+
 
 let power =
     Number(localStorage.getItem("power")) || 1;
@@ -41,10 +44,9 @@ let bought;
 
 try {
 
-    bought =
-        JSON.parse(
-            localStorage.getItem("bought")
-        );
+    bought = JSON.parse(
+        localStorage.getItem("bought")
+    );
 
     if (!Array.isArray(bought)) {
         bought = ["avatar"];
@@ -62,9 +64,9 @@ if (!bought.includes("avatar")) {
 }
 
 
-// ==========================
+// =====================================
 // ЭЛЕМЕНТЫ
-// ==========================
+// =====================================
 
 const coinsText =
     document.getElementById("coins");
@@ -85,35 +87,43 @@ const closeShop =
     document.getElementById("closeShop");
 
 
-// ==========================
-// ЗАГРУЗКА ИГРЫ
-// ==========================
+// =====================================
+// ПОЛУЧИТЬ ПУТЬ К КАРТИНКЕ
+// =====================================
+
+function getCharacterImage(name) {
+
+    if (name === "67") {
+        return "characters/67.png";
+    }
+
+    if (name === "mellstroy") {
+        return "characters/mellstroy.png";
+    }
+
+    return "characters/" + name + ".png";
+}
+
+
+// =====================================
+// ЗАГРУЗКА
+// =====================================
 
 function loadGame() {
 
     coinsText.textContent = coins;
 
-    // Для Меллстроя отдельное расширение
-    if (hero === "mellstroy") {
-
-        avatar.src =
-            "characters/mellstroy.png";
-
-    } else {
-
-        avatar.src =
-            "characters/" + hero + ".png";
-
-    }
+    avatar.src =
+        getCharacterImage(hero);
 
 }
 
 loadGame();
 
 
-// ==========================
+// =====================================
 // КЛИК
-// ==========================
+// =====================================
 
 clickButton.addEventListener(
     "click",
@@ -129,9 +139,9 @@ clickButton.addEventListener(
 );
 
 
-// ==========================
+// =====================================
 // СОХРАНЕНИЕ
-// ==========================
+// =====================================
 
 function saveGame() {
 
@@ -164,9 +174,9 @@ function saveGame() {
 }
 
 
-// ==========================
+// =====================================
 // ОТКРЫТЬ МАГАЗИН
-// ==========================
+// =====================================
 
 shopButton.addEventListener(
     "click",
@@ -182,9 +192,9 @@ shopButton.addEventListener(
 );
 
 
-// ==========================
+// =====================================
 // НАЗАД
-// ==========================
+// =====================================
 
 closeShop.addEventListener(
     "click",
@@ -198,11 +208,10 @@ closeShop.addEventListener(
 );
 
 
-// ==========================
+// =====================================
 // ЛИСЫЙ ЧЕМПИОН
-// +2
-// 100
-// ==========================
+// 100 → +2
+// =====================================
 
 document
     .getElementById("buyBald")
@@ -221,14 +230,13 @@ document
     );
 
 
-// ==========================
+// =====================================
 // ПУЗАТИК
-// +5
-// 750
-// ==========================
+// 750 → +5
+// =====================================
 
 document
-    .getElementById("buyBoss")
+    .getElementById("buyPuzatik")
     .addEventListener(
         "click",
         () => {
@@ -244,14 +252,13 @@ document
     );
 
 
-// ==========================
+// =====================================
 // БОСС
-// +10
-// 1500
-// ==========================
+// 1500 → +10
+// =====================================
 
 document
-    .getElementById("buyBoss2")
+    .getElementById("buyBoss")
     .addEventListener(
         "click",
         () => {
@@ -267,11 +274,10 @@ document
     );
 
 
-// ==========================
+// =====================================
 // КОЧ БРАТАН
-// +20
-// 2000
-// ==========================
+// 2000 → +20
+// =====================================
 
 document
     .getElementById("buyKoch")
@@ -290,11 +296,10 @@ document
     );
 
 
-// ==========================
+// =====================================
 // МЕЛЛСТРОЙ
-// +50
-// 5000
-// ==========================
+// 5000 → +50
+// =====================================
 
 document
     .getElementById("buyMellstroy")
@@ -313,9 +318,31 @@ document
     );
 
 
-// ==========================
+// =====================================
+// СИКС СЕВЕН
+// 6700 → +67
+// =====================================
+
+document
+    .getElementById("buy67")
+    .addEventListener(
+        "click",
+        () => {
+
+            buyHero(
+                "67",
+                6700,
+                67,
+                "Сикс севен"
+            );
+
+        }
+    );
+
+
+// =====================================
 // ПОКУПКА ПЕРСОНАЖА
-// ==========================
+// =====================================
 
 function buyHero(
     name,
@@ -358,35 +385,33 @@ function buyHero(
     }
 
 
-    // Покупаем
+    // Снимаем деньги
 
     coins -= price;
 
+
+    // Ставим персонажа
+
     hero = name;
 
+
+    // Ставим силу клика
+
     power = strength;
+
+
+    // Запоминаем покупку
 
     bought.push(name);
 
 
     // Меняем картинку
 
-    if (name === "mellstroy") {
-
-        avatar.src =
-            "characters/mellstroy.png";
-
-    } else {
-
-        avatar.src =
-            "characters/" +
-            name +
-            ".png";
-
-    }
+    avatar.src =
+        getCharacterImage(name);
 
 
-    // Сохраняем
+    // Сохраняем игру
 
     saveGame();
 
