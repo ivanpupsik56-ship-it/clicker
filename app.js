@@ -15,9 +15,11 @@ if (music) {
 }
 
 function playMusic() {
+
     if (music) {
         music.play().catch(() => {});
     }
+
 }
 
 
@@ -25,19 +27,24 @@ function playMusic() {
 // ДАННЫЕ ИГРОКА
 // ==========================
 
-let coins = Number(localStorage.getItem("coins")) || 0;
+let coins =
+    Number(localStorage.getItem("coins")) || 0;
 
-let hero = localStorage.getItem("hero") || "avatar";
+let hero =
+    localStorage.getItem("hero") || "avatar";
 
-let power = Number(localStorage.getItem("power")) || 1;
+let power =
+    Number(localStorage.getItem("power")) || 1;
+
 
 let bought;
 
 try {
 
-    bought = JSON.parse(
-        localStorage.getItem("bought")
-    );
+    bought =
+        JSON.parse(
+            localStorage.getItem("bought")
+        );
 
     if (!Array.isArray(bought)) {
         bought = ["avatar"];
@@ -59,29 +66,45 @@ if (!bought.includes("avatar")) {
 // ЭЛЕМЕНТЫ
 // ==========================
 
-const coinsText = document.getElementById("coins");
+const coinsText =
+    document.getElementById("coins");
 
-const avatar = document.getElementById("avatar");
+const avatar =
+    document.getElementById("avatar");
 
-const clickButton = document.getElementById("click");
+const clickButton =
+    document.getElementById("click");
 
-const shopButton = document.getElementById("shopBtn");
+const shopButton =
+    document.getElementById("shopBtn");
 
-const shop = document.getElementById("shop");
+const shop =
+    document.getElementById("shop");
 
-const closeShop = document.getElementById("closeShop");
+const closeShop =
+    document.getElementById("closeShop");
 
 
 // ==========================
-// ЗАГРУЗКА
+// ЗАГРУЗКА ИГРЫ
 // ==========================
 
 function loadGame() {
 
     coinsText.textContent = coins;
 
-    avatar.src =
-        "characters/" + hero + ".png";
+    // Для Меллстроя отдельное расширение
+    if (hero === "mellstroy") {
+
+        avatar.src =
+            "characters/mellstroy.png";
+
+    } else {
+
+        avatar.src =
+            "characters/" + hero + ".png";
+
+    }
 
 }
 
@@ -92,15 +115,18 @@ loadGame();
 // КЛИК
 // ==========================
 
-clickButton.addEventListener("click", () => {
+clickButton.addEventListener(
+    "click",
+    () => {
 
-    playMusic();
+        playMusic();
 
-    coins += power;
+        coins += power;
 
-    saveGame();
+        saveGame();
 
-});
+    }
+);
 
 
 // ==========================
@@ -111,20 +137,24 @@ function saveGame() {
 
     coinsText.textContent = coins;
 
+
     localStorage.setItem(
         "coins",
         coins
     );
+
 
     localStorage.setItem(
         "hero",
         hero
     );
 
+
     localStorage.setItem(
         "power",
         power
     );
+
 
     localStorage.setItem(
         "bought",
@@ -138,113 +168,153 @@ function saveGame() {
 // ОТКРЫТЬ МАГАЗИН
 // ==========================
 
-shopButton.addEventListener("click", () => {
+shopButton.addEventListener(
+    "click",
+    () => {
 
-    playMusic();
+        playMusic();
 
-    shop.classList.remove("hidden");
+        shop.classList.remove(
+            "hidden"
+        );
 
-});
+    }
+);
 
 
 // ==========================
 // НАЗАД
 // ==========================
 
-closeShop.addEventListener("click", () => {
+closeShop.addEventListener(
+    "click",
+    () => {
 
-    shop.classList.add("hidden");
+        shop.classList.add(
+            "hidden"
+        );
 
-});
+    }
+);
 
 
 // ==========================
 // ЛИСЫЙ ЧЕМПИОН
+// +2
+// 100
 // ==========================
 
-document.getElementById("buyBald")
-    .addEventListener("click", () => {
+document
+    .getElementById("buyBald")
+    .addEventListener(
+        "click",
+        () => {
 
-        buyHero(
-            "bald",
-            100,
-            2,
-            "Лисий Чемпион"
-        );
+            buyHero(
+                "bald",
+                100,
+                2,
+                "Лисий Чемпион"
+            );
 
-    });
+        }
+    );
 
 
 // ==========================
 // ПУЗАТИК
+// +5
+// 750
 // ==========================
 
-document.getElementById("buyBoss")
-    .addEventListener("click", () => {
+document
+    .getElementById("buyBoss")
+    .addEventListener(
+        "click",
+        () => {
 
-        buyHero(
-            "puzatik",
-            750,
-            5,
-            "Пузатик"
-        );
+            buyHero(
+                "puzatik",
+                750,
+                5,
+                "Пузатик"
+            );
 
-    });
+        }
+    );
 
 
 // ==========================
 // БОСС
+// +10
+// 1500
 // ==========================
 
-document.getElementById("buyBoss2")
-    .addEventListener("click", () => {
+document
+    .getElementById("buyBoss2")
+    .addEventListener(
+        "click",
+        () => {
 
-        buyHero(
-            "boss",
-            1500,
-            10,
-            "Босс"
-        );
+            buyHero(
+                "boss",
+                1500,
+                10,
+                "Босс"
+            );
 
-    });
+        }
+    );
 
 
 // ==========================
 // КОЧ БРАТАН
+// +20
+// 2000
 // ==========================
 
-document.getElementById("buyKoch")
-    .addEventListener("click", () => {
+document
+    .getElementById("buyKoch")
+    .addEventListener(
+        "click",
+        () => {
 
-        buyHero(
-            "koch",
-            2000,
-            20,
-            "Коч братан"
-        );
+            buyHero(
+                "koch",
+                2000,
+                20,
+                "Коч братан"
+            );
 
-    });
+        }
+    );
 
 
 // ==========================
 // МЕЛЛСТРОЙ
+// +50
+// 5000
 // ==========================
 
-document.getElementById("buyMellstroy")
-    .addEventListener("click", () => {
+document
+    .getElementById("buyMellstroy")
+    .addEventListener(
+        "click",
+        () => {
 
-        buyHero(
-            "mellstroy",
-            5000,
-            50,
-            "Меллстрой"
-        );
+            buyHero(
+                "mellstroy",
+                5000,
+                50,
+                "Меллстрой"
+            );
 
-    });
+        }
+    );
 
 
 // ==========================
-// ПОКУПКА
+// ПОКУПКА ПЕРСОНАЖА
 // ==========================
 
 function buyHero(
@@ -254,7 +324,9 @@ function buyHero(
     title
 ) {
 
+
     // Уже куплен
+
     if (bought.includes(name)) {
 
         alert(
@@ -263,10 +335,12 @@ function buyHero(
         );
 
         return;
+
     }
 
 
-    // Не хватает денег
+    // Не хватает монет
+
     if (coins < price) {
 
         alert(
@@ -280,10 +354,12 @@ function buyHero(
         );
 
         return;
+
     }
 
 
-    // Покупка
+    // Покупаем
+
     coins -= price;
 
     hero = name;
@@ -293,16 +369,29 @@ function buyHero(
     bought.push(name);
 
 
-    // Меняем персонажа
-    avatar.src =
-        "characters/" +
-        name +
-        ".png";
+    // Меняем картинку
+
+    if (name === "mellstroy") {
+
+        avatar.src =
+            "characters/mellstroy.png";
+
+    } else {
+
+        avatar.src =
+            "characters/" +
+            name +
+            ".png";
+
+    }
 
 
     // Сохраняем
+
     saveGame();
 
+
+    // Сообщение
 
     alert(
         title +
