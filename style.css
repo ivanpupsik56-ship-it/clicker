@@ -1,101 +1,308 @@
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
+    user-select:none;
 }
 
 
 body{
 
-margin:0;
-height:100vh;
+    margin:0;
+    height:100vh;
 
-display:flex;
-justify-content:center;
-align-items:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-font-family:Arial;
+    font-family:Arial, sans-serif;
 
-background:linear-gradient(
-180deg,
-#0057b7 50%,
-#ffd700 50%
-);
+    overflow:hidden;
+
+
+    background:
+    linear-gradient(
+        180deg,
+        #0057b7 0%,
+        #0057b7 50%,
+        #ffd700 50%,
+        #ffd700 100%
+    );
 
 }
+
 
 
 .game{
 
-text-align:center;
+    width:100%;
+    max-width:420px;
+
+    text-align:center;
+
+    padding:20px;
+
+    position:relative;
 
 }
+
 
 
 h1{
 
-color:white;
-font-size:40px;
+    color:white;
+
+    font-size:42px;
+
+    text-shadow:
+    0 4px 10px #0008;
+
+    margin-bottom:15px;
 
 }
 
+
+
+/* счётчик */
 
 .score{
 
-background:#111;
-color:white;
+    background:
+    rgba(0,0,0,0.75);
 
-font-size:45px;
+    color:white;
 
-padding:20px 40px;
+    font-size:45px;
 
-border-radius:25px;
+    font-weight:bold;
 
-margin:20px;
+    padding:15px 35px;
+
+    border-radius:30px;
+
+    display:inline-block;
+
+    box-shadow:
+
+    0 10px 25px #0005;
 
 }
+
+
+
+/* лицо */
+
+.avatar{
+
+
+    width:260px;
+
+    height:260px;
+
+
+    object-fit:cover;
+
+
+    border-radius:50%;
+
+
+    border:
+
+    10px solid #ffd700;
+
+
+    margin:30px 0;
+
+
+    box-shadow:
+
+    0 0 30px #ffd700aa,
+
+    0 15px 30px #0006;
+
+
+    transition:0.12s;
+
+}
+
+
+
+/* кнопка */
+
+button{
+
+
+    width:300px;
+
+    height:90px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    background:
+
+    linear-gradient(
+        180deg,
+        #ffe45c,
+        #ffbd00
+    );
+
+
+    font-size:40px;
+
+    font-weight:900;
+
+
+    color:#222;
+
+
+    cursor:pointer;
+
+
+    box-shadow:
+
+    0 12px 0 #b27c00,
+
+    0 20px 30px #0005;
+
+
+    transition:0.1s;
+
+}
+
+
+
+button:active{
+
+
+    transform:
+
+    translateY(10px);
+
+
+    box-shadow:
+
+    0 3px 0 #b27c00;
+
+}
+
+
+
+/* прыжок лица */
+
+.jump{
+
+
+    transform:
+
+    scale(1.12)
+
+    rotate(4deg);
+
+}
+
+
+
+/* +1 */
+
+.plus{
+
+
+    position:absolute;
+
+
+    left:50%;
+
+
+    top:55%;
+
+
+    transform:translateX(-50%);
+
+
+    font-size:60px;
+
+
+    font-weight:900;
+
+
+    color:white;
+
+
+    text-shadow:
+
+    0 5px 10px #000;
+
+
+    animation:
+
+    fly 0.8s forwards;
+
+}
+
+
+
+@keyframes fly{
+
+
+    0%{
+
+        opacity:1;
+
+        transform:
+
+        translate(-50%,0)
+
+        scale(1);
+
+    }
+
+
+    100%{
+
+
+        opacity:0;
+
+
+        transform:
+
+        translate(-50%,-150px)
+
+        scale(1.5);
+
+    }
+
+}
+
+
+
+/* адаптация телефона */
+
+@media(max-width:500px){
 
 
 .avatar{
 
-width:250px;
-height:250px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-border:8px solid yellow;
-
-transition:0.1s;
+    width:220px;
+    height:220px;
 
 }
 
 
 button{
 
-display:block;
-
-margin:30px auto;
-
-width:280px;
-height:80px;
-
-border:0;
-
-border-radius:40px;
-
-background:#ffd700;
-
-font-size:35px;
-
-font-weight:bold;
-
-cursor:pointer;
+    width:260px;
 
 }
 
 
-button:active{
+h1{
 
-transform:scale(0.9);
+    font-size:34px;
+
+}
+
 
 }
