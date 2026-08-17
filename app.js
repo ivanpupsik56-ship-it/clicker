@@ -4,72 +4,132 @@ tg.ready();
 tg.expand();
 
 
-let score = Number(localStorage.getItem("clicks")) || 0;
 
+let coins = Number(localStorage.getItem("coins")) || 0;
 
-const text = document.getElementById("score");
-const btn = document.getElementById("click");
-const avatar = document.querySelector(".avatar");
-
-
-text.innerHTML = score;
+let hero = localStorage.getItem("hero") || "avatar";
 
 
 
-btn.onclick = () => {
+const coinsText = document.getElementById("coins");
 
-    score++;
-
-    text.innerHTML = score;
-
-
-    // сохраняем
-    localStorage.setItem(
-        "clicks",
-        score
-    );
-
-
-    // вибрация в Telegram
-    if(tg.HapticFeedback){
-
-        tg.HapticFeedback.impactOccurred(
-            "medium"
-        );
-
-    }
-
-
-    // анимация лица
-    avatar.classList.add("jump");
-
-
-    setTimeout(()=>{
-
-        avatar.classList.remove("jump");
-
-    },150);
+const avatar = document.getElementById("avatar");
 
 
 
-    // +1 эффект
-    let plus = document.createElement("div");
-
-    plus.innerHTML="+1";
-
-    plus.className="plus";
+coinsText.innerHTML = coins;
 
 
-    document.querySelector(".game")
-    .appendChild(plus);
+avatar.src =
+"characters/" + hero + ".png";
 
 
 
-    setTimeout(()=>{
 
-        plus.remove();
 
-    },800);
+document.getElementById("click").onclick = ()=>{
+
+
+coins++;
+
+
+save();
 
 
 };
+
+
+
+
+
+function save(){
+
+
+coinsText.innerHTML = coins;
+
+
+localStorage.setItem(
+"coins",
+coins
+);
+
+
+}
+
+
+
+
+
+document.getElementById("shopBtn").onclick = ()=>{
+
+
+document
+.getElementById("shop")
+.classList.remove("hidden");
+
+
+};
+
+
+
+
+
+document.getElementById("closeShop").onclick = ()=>{
+
+
+document
+.getElementById("shop")
+.classList.add("hidden");
+
+
+};
+
+
+
+
+
+
+
+function buyBald(){
+
+
+if(coins >= 100){
+
+
+coins -= 100;
+
+
+hero="bald";
+
+
+localStorage.setItem(
+"hero",
+hero
+);
+
+
+
+avatar.src=
+"characters/bald.png";
+
+
+
+save();
+
+
+
+alert("Персонаж куплен!");
+
+
+
+}
+
+else{
+
+
+alert("Нужно 100 монет");
+
+}
+
+
+}
