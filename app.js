@@ -12,9 +12,8 @@ let hero = localStorage.getItem("hero") || "avatar";
 let power = Number(localStorage.getItem("power")) || 1;
 
 
-
 let bought = JSON.parse(
-    localStorage.getItem("bought")
+localStorage.getItem("bought")
 ) || ["avatar"];
 
 
@@ -24,7 +23,6 @@ let bought = JSON.parse(
 const coinsText = document.getElementById("coins");
 
 const avatar = document.getElementById("avatar");
-
 
 
 coinsText.innerHTML = coins;
@@ -37,23 +35,13 @@ avatar.src = "characters/" + hero + ".png";
 
 
 
-// КЛИК
-
 document.getElementById("click").onclick = ()=>{
 
 
 coins += power;
 
 
-coinsText.innerHTML = coins;
-
-
-
-localStorage.setItem(
-    "coins",
-    coins
-);
-
+save();
 
 
 };
@@ -62,10 +50,42 @@ localStorage.setItem(
 
 
 
+function save(){
+
+
+coinsText.innerHTML = coins;
+
+
+localStorage.setItem(
+"coins",
+coins
+);
+
+
+localStorage.setItem(
+"hero",
+hero
+);
+
+
+localStorage.setItem(
+"power",
+power
+);
+
+
+localStorage.setItem(
+"bought",
+JSON.stringify(bought)
+);
+
+
+}
 
 
 
-// открыть магазин
+
+
 
 document.getElementById("shopBtn").onclick = ()=>{
 
@@ -79,18 +99,12 @@ document
 
 
 
-
-
-// закрыть магазин
-
 document.getElementById("closeShop").onclick = ()=>{
-
 
 document
 .getElementById("shop")
 .classList.add("hidden");
 
-
 };
 
 
@@ -100,62 +114,17 @@ document
 
 
 
-
-// ЛИСИЙ ЧЕМПИОН
+// Лисий Чемпион
 
 document.getElementById("buyBald").onclick = ()=>{
 
 
-if(bought.includes("bald")){
-
-
-alert("Лисий Чемпион уже куплен!");
-
-return;
-
-
-}
-
-
-
-if(coins >= 100){
-
-
-coins -= 100;
-
-
-hero = "bald";
-
-
-power = 2;
-
-
-
-bought.push("bald");
-
-
-
-save();
-
-
-
-avatar.src = "characters/bald.png";
-
-
-
-alert("Лисий Чемпион куплен! +2 за клик 🔥");
-
-
-
-}
-
-else{
-
-
-alert("Нужно 100 монет");
-
-
-}
+buyHero(
+"bald",
+100,
+2,
+"Лисий Чемпіон"
+);
 
 
 };
@@ -166,64 +135,38 @@ alert("Нужно 100 монет");
 
 
 
-
-
-// ПУЗАТИК
+// Пузатик
 
 document.getElementById("buyBoss").onclick = ()=>{
 
 
-if(bought.includes("puzatik")){
+buyHero(
+"puzatik",
+750,
+5,
+"Пузатик"
+);
 
 
-alert("Пузатик уже куплен!");
-
-return;
-
-
-}
-
-
-
-
-if(coins >= 750){
-
-
-coins -= 750;
-
-
-hero = "puzatik";
-
-
-power = 5;
+};
 
 
 
-bought.push("puzatik");
 
 
 
-save();
+
+// Босс
+
+document.getElementById("buyBoss2").onclick = ()=>{
 
 
-
-avatar.src = "characters/puzatik.png";
-
-
-
-alert("Пузатик куплен! +5 за клик 🐷🔥");
-
-
-
-}
-
-else{
-
-
-alert("Нужно 750 монет");
-
-
-}
+buyHero(
+"boss",
+1500,
+10,
+"Босс"
+);
 
 
 };
@@ -235,40 +178,62 @@ alert("Нужно 750 монет");
 
 
 
-
-function save(){
-
-
-coinsText.innerHTML = coins;
+function buyHero(name,price,strength,title){
 
 
 
-localStorage.setItem(
-"coins",
-coins
-);
+if(bought.includes(name)){
+
+
+alert(title+" уже куплен!");
+
+return;
+
+
+}
 
 
 
-localStorage.setItem(
-"hero",
-hero
-);
+
+if(coins >= price){
 
 
 
-localStorage.setItem(
-"power",
-power
-);
+coins -= price;
+
+
+hero=name;
+
+
+power=strength;
 
 
 
-localStorage.setItem(
-"bought",
-JSON.stringify(bought)
-);
+bought.push(name);
 
+
+
+avatar.src =
+"characters/"+name+".png";
+
+
+
+save();
+
+
+
+alert(title+" куплен! ⚡ +"+strength+" за клик");
+
+
+}
+
+else{
+
+
+alert("Не хватает монет 😢");
+
+
+}
 
 
 }
