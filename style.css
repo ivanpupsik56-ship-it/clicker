@@ -7,6 +7,8 @@
 body{
 
     margin:0;
+    padding:0;
+
     height:100vh;
 
     display:flex;
@@ -38,9 +40,9 @@ body{
 
     text-align:center;
 
-    padding:20px;
-
     position:relative;
+
+    padding:20px;
 
 }
 
@@ -52,21 +54,27 @@ h1{
 
     font-size:42px;
 
-    text-shadow:
-    0 4px 10px #0008;
+    margin:10px 0 20px;
 
-    margin-bottom:15px;
+    text-shadow:
+
+    0 4px 10px black;
 
 }
 
 
 
-/* счётчик */
 
-.score{
+/* Монеты */
+
+.coins{
+
+    display:inline-block;
 
     background:
+
     rgba(0,0,0,0.75);
+
 
     color:white;
 
@@ -74,24 +82,25 @@ h1{
 
     font-weight:bold;
 
+
     padding:15px 35px;
+
 
     border-radius:30px;
 
-    display:inline-block;
 
     box-shadow:
 
-    0 10px 25px #0005;
+    0 10px 25px #0008;
 
 }
 
 
 
-/* лицо */
+
+/* персонаж */
 
 .avatar{
-
 
     width:260px;
 
@@ -114,28 +123,61 @@ h1{
 
     box-shadow:
 
-    0 0 30px #ffd700aa,
+    0 0 30px #ffd700,
 
-    0 15px 30px #0006;
+    0 15px 30px #0008;
 
 
-    transition:0.12s;
+    transition:0.15s;
 
 }
 
 
 
-/* кнопка */
+.avatar:active{
+
+    transform:scale(1.1);
+
+}
+
+
+
+
+/* кнопки */
 
 button{
 
 
+    border:none;
+
+
+    cursor:pointer;
+
+
+    font-weight:bold;
+
+
+    transition:0.15s;
+
+
+}
+
+
+
+
+#click{
+
+
+    display:block;
+
+
+    margin:20px auto;
+
+
     width:300px;
 
+
     height:90px;
-
-
-    border:none;
 
 
     border-radius:50px;
@@ -144,42 +186,35 @@ button{
     background:
 
     linear-gradient(
-        180deg,
-        #ffe45c,
-        #ffbd00
+
+    #ffe45c,
+
+    #ffbd00
+
     );
 
 
     font-size:40px;
 
-    font-weight:900;
-
 
     color:#222;
-
-
-    cursor:pointer;
 
 
     box-shadow:
 
     0 12px 0 #b27c00,
 
-    0 20px 30px #0005;
+    0 20px 30px #0006;
 
-
-    transition:0.1s;
 
 }
 
 
 
-button:active{
+#click:active{
 
 
-    transform:
-
-    translateY(10px);
+    transform:translateY(10px);
 
 
     box-shadow:
@@ -190,22 +225,251 @@ button:active{
 
 
 
-/* прыжок лица */
+
+
+#shopBtn{
+
+
+    width:220px;
+
+    height:60px;
+
+
+    border-radius:30px;
+
+
+    background:#7b2cff;
+
+
+    color:white;
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+
+/* Магазин */
+
+
+.shop{
+
+
+    position:fixed;
+
+
+    top:50%;
+
+    left:50%;
+
+
+    transform:
+
+    translate(-50%,-50%);
+
+
+
+    width:350px;
+
+
+
+    background:
+
+    #101820;
+
+
+    color:white;
+
+
+
+    padding:25px;
+
+
+
+    border-radius:30px;
+
+
+
+    box-shadow:
+
+    0 20px 50px black;
+
+
+
+    z-index:10;
+
+
+}
+
+
+
+
+
+.shop h2{
+
+
+    font-size:35px;
+
+
+}
+
+
+
+
+
+.hidden{
+
+
+    display:none;
+
+
+}
+
+
+
+
+
+/* карточка персонажа */
+
+
+.card{
+
+
+    background:#1c2733;
+
+
+    padding:20px;
+
+
+    border-radius:25px;
+
+
+
+}
+
+
+
+
+.card img{
+
+
+    width:170px;
+
+
+    height:170px;
+
+
+    border-radius:50%;
+
+
+    object-fit:cover;
+
+
+    border:5px solid gold;
+
+
+}
+
+
+
+
+
+.card h3{
+
+
+    font-size:25px;
+
+
+}
+
+
+
+.card p{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+
+.card button{
+
+
+    background:#00d632;
+
+
+    color:white;
+
+
+    padding:15px 35px;
+
+
+    border-radius:25px;
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+#closeShop{
+
+
+    margin-top:20px;
+
+
+    background:#ff3131;
+
+
+    color:white;
+
+
+    padding:12px 30px;
+
+
+    border-radius:20px;
+
+
+    font-size:20px;
+
+
+}
+
+
+
+
+
+
+/* анимация клика */
+
 
 .jump{
 
 
     transform:
 
-    scale(1.12)
+    scale(1.15)
 
-    rotate(4deg);
+    rotate(5deg);
+
 
 }
 
 
 
-/* +1 */
+
 
 .plus{
 
@@ -213,54 +477,38 @@ button:active{
     position:absolute;
 
 
-    left:50%;
-
-
-    top:55%;
-
-
-    transform:translateX(-50%);
+    color:white;
 
 
     font-size:60px;
 
 
-    font-weight:900;
+    font-weight:bold;
 
 
-    color:white;
+    animation:plus 0.8s forwards;
 
-
-    text-shadow:
-
-    0 5px 10px #000;
-
-
-    animation:
-
-    fly 0.8s forwards;
 
 }
 
 
 
-@keyframes fly{
+@keyframes plus{
 
 
-    0%{
+    from{
+
 
         opacity:1;
 
         transform:
 
-        translate(-50%,0)
-
-        scale(1);
+        translateY(0);
 
     }
 
 
-    100%{
+    to{
 
 
         opacity:0;
@@ -268,41 +516,51 @@ button:active{
 
         transform:
 
-        translate(-50%,-150px)
+        translateY(-150px);
 
-        scale(1.5);
 
     }
+
 
 }
 
 
 
-/* адаптация телефона */
+
+
+
 
 @media(max-width:500px){
 
 
-.avatar{
-
-    width:220px;
-    height:220px;
-
-}
+    .avatar{
 
 
-button{
+        width:220px;
 
-    width:260px;
-
-}
+        height:220px;
 
 
-h1{
+    }
 
-    font-size:34px;
 
-}
+
+    #click{
+
+
+        width:260px;
+
+
+    }
+
+
+    h1{
+
+
+        font-size:34px;
+
+
+    }
 
 
 }
