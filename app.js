@@ -4,22 +4,26 @@ tg.ready();
 tg.expand();
 
 
-// =========================
+// ==========================
 // ФОНОВАЯ МУЗЫКА
-// =========================
+// ==========================
 
 const music = document.getElementById("music");
 
-music.volume = 0.25;
+if (music) {
+    music.volume = 0.25;
+}
 
 function playMusic() {
-    music.play().catch(() => {});
+    if (music) {
+        music.play().catch(() => {});
+    }
 }
 
 
-// =========================
+// ==========================
 // ДАННЫЕ ИГРОКА
-// =========================
+// ==========================
 
 let coins = Number(localStorage.getItem("coins")) || 0;
 
@@ -27,52 +31,83 @@ let hero = localStorage.getItem("hero") || "avatar";
 
 let power = Number(localStorage.getItem("power")) || 1;
 
-let bought = JSON.parse(
-    localStorage.getItem("bought")
-) || ["avatar"];
+let bought;
+
+try {
+
+    bought = JSON.parse(
+        localStorage.getItem("bought")
+    );
+
+    if (!Array.isArray(bought)) {
+        bought = ["avatar"];
+    }
+
+} catch {
+
+    bought = ["avatar"];
+
+}
 
 
-// =========================
+if (!bought.includes("avatar")) {
+    bought.push("avatar");
+}
+
+
+// ==========================
 // ЭЛЕМЕНТЫ
-// =========================
+// ==========================
 
 const coinsText = document.getElementById("coins");
 
 const avatar = document.getElementById("avatar");
 
+const clickButton = document.getElementById("click");
 
-// =========================
+const shopButton = document.getElementById("shopBtn");
+
+const shop = document.getElementById("shop");
+
+const closeShop = document.getElementById("closeShop");
+
+
+// ==========================
 // ЗАГРУЗКА
-// =========================
+// ==========================
 
-coinsText.textContent = coins;
+function loadGame() {
 
-avatar.src = "characters/" + hero + ".png";
+    coinsText.textContent = coins;
+
+    avatar.src =
+        "characters/" + hero + ".png";
+
+}
+
+loadGame();
 
 
-// =========================
+// ==========================
 // КЛИК
-// =========================
+// ==========================
 
-document.getElementById("click").onclick = () => {
+clickButton.addEventListener("click", () => {
 
-    // запускаем музыку после первого нажатия
     playMusic();
 
-    // добавляем монеты
     coins += power;
 
-    // сохраняем
-    save();
+    saveGame();
 
-};
+});
 
 
-// =========================
+// ==========================
 // СОХРАНЕНИЕ
-// =========================
+// ==========================
 
-function save() {
+function saveGame() {
 
     coinsText.textContent = coins;
 
@@ -99,159 +134,182 @@ function save() {
 }
 
 
-// =========================
+// ==========================
 // ОТКРЫТЬ МАГАЗИН
-// =========================
+// ==========================
 
-document.getElementById("shopBtn").onclick = () => {
+shopButton.addEventListener("click", () => {
 
     playMusic();
 
-    document
-        .getElementById("shop")
-        .classList.remove("hidden");
+    shop.classList.remove("hidden");
 
-};
+});
 
 
-// =========================
-// НАЗАД ИЗ МАГАЗИНА
-// =========================
+// ==========================
+// НАЗАД
+// ==========================
 
-document.getElementById("closeShop").onclick = () => {
+closeShop.addEventListener("click", () => {
 
-    document
-        .getElementById("shop")
-        .classList.add("hidden");
+    shop.classList.add("hidden");
 
-};
+});
 
 
-// =========================
-// ЛИСИЙ ЧЕМПИОН
-// 100 монет
-// +2 за клик
-// =========================
+// ==========================
+// ЛИСЫЙ ЧЕМПИОН
+// ==========================
 
-document.getElementById("buyBald").onclick = () => {
+document.getElementById("buyBald")
+    .addEventListener("click", () => {
 
-    buyHero(
-        "bald",
-        100,
-        2,
-        "Лисий Чемпион"
-    );
+        buyHero(
+            "bald",
+            100,
+            2,
+            "Лисий Чемпион"
+        );
 
-};
+    });
 
 
-// =========================
+// ==========================
 // ПУЗАТИК
-// 750 монет
-// +5 за клик
-// =========================
+// ==========================
 
-document.getElementById("buyBoss").onclick = () => {
+document.getElementById("buyBoss")
+    .addEventListener("click", () => {
 
-    buyHero(
-        "puzatik",
-        750,
-        5,
-        "Пузатик"
-    );
+        buyHero(
+            "puzatik",
+            750,
+            5,
+            "Пузатик"
+        );
 
-};
+    });
 
 
-// =========================
+// ==========================
 // БОСС
-// 1500 монет
-// +10 за клик
-// =========================
+// ==========================
 
-document.getElementById("buyBoss2").onclick = () => {
+document.getElementById("buyBoss2")
+    .addEventListener("click", () => {
 
-    buyHero(
-        "boss",
-        1500,
-        10,
-        "Босс"
-    );
+        buyHero(
+            "boss",
+            1500,
+            10,
+            "Босс"
+        );
 
-};
+    });
 
 
-// =========================
+// ==========================
 // КОЧ БРАТАН
-// 2000 монет
-// +20 за клик
-// =========================
+// ==========================
 
-document.getElementById("buyKoch").onclick = () => {
+document.getElementById("buyKoch")
+    .addEventListener("click", () => {
 
-    buyHero(
-        "koch",
-        2000,
-        20,
-        "Коч братан"
-    );
+        buyHero(
+            "koch",
+            2000,
+            20,
+            "Коч братан"
+        );
 
-};
+    });
 
 
-// =========================
-// ПОКУПКА ПЕРСОНАЖА
-// =========================
+// ==========================
+// МЕЛЛСТРОЙ
+// ==========================
 
-function buyHero(name, price, strength, title) {
+document.getElementById("buyMellstroy")
+    .addEventListener("click", () => {
 
-    // уже куплен
+        buyHero(
+            "mellstroy",
+            5000,
+            50,
+            "Меллстрой"
+        );
+
+    });
+
+
+// ==========================
+// ПОКУПКА
+// ==========================
+
+function buyHero(
+    name,
+    price,
+    strength,
+    title
+) {
+
+    // Уже куплен
     if (bought.includes(name)) {
 
         alert(
-            title + " уже куплен! ✅"
+            title +
+            " уже куплен! ✅"
         );
 
         return;
     }
 
 
-    // хватает денег
-    if (coins >= price) {
-
-        coins -= price;
-
-        hero = name;
-
-        power = strength;
-
-        bought.push(name);
-
-
-        // меняем главного персонажа
-        avatar.src =
-            "characters/" + name + ".png";
-
-
-        // сохраняем
-        save();
-
+    // Не хватает денег
+    if (coins < price) {
 
         alert(
-            title +
-            " куплен! ⚡ +" +
-            strength +
-            " за клик"
+            "Не хватает монет 😢\n\n" +
+            "Нужно: " +
+            price +
+            " 🪙\n" +
+            "У тебя: " +
+            coins +
+            " 🪙"
         );
 
+        return;
     }
 
-    else {
 
-        alert(
-            "Не хватает монет 😢"
-        );
+    // Покупка
+    coins -= price;
 
-    }
+    hero = name;
+
+    power = strength;
+
+    bought.push(name);
+
+
+    // Меняем персонажа
+    avatar.src =
+        "characters/" +
+        name +
+        ".png";
+
+
+    // Сохраняем
+    saveGame();
+
+
+    alert(
+        title +
+        " куплен! 🎉\n\n" +
+        "Теперь ты получаешь +" +
+        strength +
+        " 🪙 за клик!"
+    );
 
 }
