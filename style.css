@@ -1,72 +1,552 @@
 *{
-box-sizing:border-box;
-user-select:none;
+    box-sizing:border-box;
+    user-select:none;
 }
+
+
+html,body{
+
+    margin:0;
+    padding:0;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    font-family:Arial, sans-serif;
+
+}
+
+
 
 
 body{
 
-margin:0;
+    display:flex;
 
-height:100vh;
+    justify-content:center;
 
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-family:Arial;
+    align-items:center;
 
 
-background:linear-gradient(
-180deg,
-#0057b7 50%,
-#ffd700 50%
-);
+    background:
 
+    linear-gradient(
+
+    180deg,
+
+    #0057b7 50%,
+
+    #ffd700 50%
+
+    );
 
 }
+
+
 
 
 
 .game{
 
-text-align:center;
+    width:100%;
 
-width:100%;
+    max-width:420px;
 
-max-width:420px;
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    padding:20px;
 
 }
+
+
+
+
 
 
 
 h1{
 
-color:white;
+    color:white;
 
-font-size:40px;
+    font-size:38px;
 
-text-shadow:0 5px 10px black;
+    margin:10px;
+
+
+    text-shadow:
+
+    0 5px 10px black;
 
 }
 
 
 
+
+
+
+
 .coins{
 
-background:#111;
 
-color:white;
+    background:#111;
 
-display:inline-block;
 
-padding:15px 35px;
+    color:white;
 
-border-radius:25px;
 
-font-size:40px;
+    font-size:38px;
+
+
+    font-weight:bold;
+
+
+    padding:12px 30px;
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+
+    0 10px 20px #0008;
+
+
+}
+
+
+
+
+
+
+
+
+.avatar{
+
+
+    width:240px;
+
+    height:240px;
+
+
+    object-fit:cover;
+
+
+    border-radius:50%;
+
+
+    border:8px solid gold;
+
+
+    margin:20px;
+
+
+    box-shadow:
+
+    0 0 30px gold;
+
+
+}
+
+
+
+
+
+
+
+
+button{
+
+
+    border:none;
+
+
+    cursor:pointer;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+
+
+#click{
+
+
+    width:300px;
+
+
+    height:80px;
+
+
+    border-radius:50px;
+
+
+    background:
+
+    linear-gradient(
+
+    #ffe45c,
+
+    #ffbd00
+
+    );
+
+
+    font-size:38px;
+
+
+    box-shadow:
+
+    0 10px 0 #a87500;
+
+
+}
+
+
+
+
+
+
+#click:active{
+
+
+    transform:translateY(8px);
+
+
+    box-shadow:none;
+
+
+}
+
+
+
+
+
+
+
+#shopBtn{
+
+
+    margin-top:20px;
+
+
+    width:230px;
+
+
+    height:60px;
+
+
+    border-radius:30px;
+
+
+    background:#7b2cff;
+
+
+    color:white;
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* МАГАЗИН */
+
+
+
+.shop{
+
+
+    position:fixed;
+
+
+    top:50%;
+
+
+    left:50%;
+
+
+    transform:
+
+    translate(-50%,-50%);
+
+
+
+    width:90%;
+
+
+    max-width:380px;
+
+
+    max-height:85vh;
+
+
+
+    overflow-y:auto;
+
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    padding:20px;
+
+
+    border-radius:30px;
+
+
+
+    box-shadow:
+
+    0 20px 50px black;
+
+
+
+    z-index:100;
+
+
+
+}
+
+
+
+
+
+/* плавный скролл */
+
+
+.shop{
+
+
+    -webkit-overflow-scrolling:touch;
+
+
+}
+
+
+
+
+
+
+
+.hidden{
+
+
+    display:none;
+
+
+}
+
+
+
+
+
+
+
+
+.card{
+
+
+    background:#202b38;
+
+
+    padding:20px;
+
+
+    border-radius:25px;
+
+
+    margin-bottom:20px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+
+
+
+.card img{
+
+
+    width:150px;
+
+
+    height:150px;
+
+
+    object-fit:cover;
+
+
+    border-radius:50%;
+
+
+    border:5px solid gold;
+
+
+}
+
+
+
+
+
+
+
+
+.card h3{
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+.card p{
+
+
+    font-size:19px;
+
+
+}
+
+
+
+
+
+.card button{
+
+
+    width:200px;
+
+
+    height:55px;
+
+
+    border-radius:25px;
+
+
+    background:#00d632;
+
+
+    color:white;
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+
+
+
+
+#closeShop{
+
+
+    width:220px;
+
+
+    height:55px;
+
+
+    border-radius:25px;
+
+
+    background:red;
+
+
+    color:white;
+
+
+    font-size:22px;
+
+
+    margin-top:5px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* телефон */
+
+
+@media(max-width:500px){
+
+
+
+.game{
+
+
+    padding:10px;
+
+
+}
+
+
+
+
+h1{
+
+
+    font-size:32px;
+
+
+}
+
+
+
+
+.coins{
+
+
+    font-size:30px;
+
 
 }
 
@@ -75,177 +555,74 @@ font-size:40px;
 
 .avatar{
 
-width:260px;
 
-height:260px;
+    width:190px;
 
-object-fit:cover;
+    height:190px;
 
-border-radius:50%;
-
-border:8px solid gold;
-
-margin:25px;
-
-transition:.15s;
-
-box-shadow:0 0 30px gold;
 
 }
 
 
-
-.jump{
-
-transform:scale(1.15);
-
-}
-
-
-
-
-
-button{
-
-border:none;
-
-cursor:pointer;
-
-font-weight:bold;
-
-}
 
 
 
 #click{
 
-width:300px;
 
-height:90px;
+    width:260px;
 
-border-radius:50px;
 
-font-size:40px;
+    height:75px;
 
-background:#ffd700;
 
-box-shadow:0 10px 0 #a87500;
+    font-size:32px;
+
 
 }
 
 
-
-#click:active{
-
-transform:translateY(8px);
-
-box-shadow:none;
-
-}
 
 
 
 #shopBtn{
 
-margin-top:25px;
 
-width:220px;
+    width:210px;
 
-height:60px;
 
-border-radius:30px;
+    height:55px;
 
-font-size:25px;
-
-background:#7b2cff;
-
-color:white;
 
 }
-
 
 
 
 
 .shop{
 
-position:fixed;
 
-top:50%;
-
-left:50%;
-
-transform:translate(-50%,-50%);
+    max-height:90vh;
 
 
-background:#111;
+    width:94%;
 
-color:white;
-
-padding:25px;
-
-border-radius:25px;
-
-width:330px;
 
 }
-
-
-
-
-
-.hidden{
-
-display:none;
-
-}
-
 
 
 
 
 .card img{
 
-width:150px;
 
-height:150px;
+    width:130px;
 
-border-radius:50%;
 
-object-fit:cover;
+    height:130px;
 
-border:5px solid gold;
 
 }
 
-
-
-.card button{
-
-background:#00d632;
-
-color:white;
-
-padding:15px 30px;
-
-border-radius:20px;
-
-font-size:20px;
-
-}
-
-
-
-#closeShop{
-
-margin-top:20px;
-
-padding:10px 25px;
-
-border-radius:20px;
-
-background:red;
-
-color:white;
 
 }
